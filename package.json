@@ -1,0 +1,46 @@
+{
+  "name": "interview",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint app --ext ts,tsx,js,jsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint app --ext js,jsx,ts,tsx --fix",
+    "format": "prettier --write 'app/**/*.{ts,tsx,js,jsx,json,css,scss,md,html}'",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "lint-staged": "^15.2.10",
+    "next": "15.0.3",
+    "react": "19.0.0-rc-66855b96-20241106",
+    "react-dom": "19.0.0-rc-66855b96-20241106"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "15.0.3",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "husky": "^9.1.6",
+    "postcss": "^8",
+    "prettier": "^3.3.3",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run lint && npm run format"
+    }
+  },
+  "lint-staged": {
+    "app/**/*.{ts,tsx,js,jsx,json,css,scss,md,html}": [
+      "npm run lint",
+      "npm run format"
+    ]
+  }
+}
